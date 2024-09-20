@@ -1,9 +1,15 @@
 import React from 'react';
+import Header from './components/header';
+import Footer from './components/footer';
+import ContentBox from './components/inputContent'
+
 
 function App() {
   return (
     <div>
-      TO DO REACT
+      <Header />
+      <ContentBox />
+      <Footer />
     </div>
   );
 }
