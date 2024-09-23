@@ -7,14 +7,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 export interface ITaskList {
     taskList: ITask[];
     handleDelete(id: number): void;
+    handleEdit(task: ITask): void;
 }
 
-const TaskList = (({taskList,handleDelete} : ITaskList) => {
-    
-    const editTask = ((e: React.MouseEvent): void =>{
-        const modal = document.querySelector("#modal");
-        modal!.classList.remove("hide");
-    });
+const TaskList = (({taskList,handleDelete,handleEdit} : ITaskList) => {
 
     return (
       <>
@@ -29,11 +25,11 @@ const TaskList = (({taskList,handleDelete} : ITaskList) => {
                                 <p>Difficulty: {task.difficulty}</p>
                             </div>
                             <div className={styles.icons_column}>
-                                <div>
-                                    <CreateIcon onClick={editTask} sx={{color: 'white'}}/>
+                                <div onClick={() => handleEdit(task)} >
+                                    <CreateIcon sx={{color: 'white'}}/>
                                 </div>
-                                <div>
-                                    <DeleteForeverIcon onClick={() => handleDelete(task.id)} sx={{color: 'white'}}/>
+                                <div onClick={() => handleDelete(task.id)}>
+                                    <DeleteForeverIcon sx={{color: 'white'}}/>
                                 </div>
                             </div>
                         </div>

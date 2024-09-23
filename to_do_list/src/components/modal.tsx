@@ -3,8 +3,7 @@ import styles from './Modal.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 
 export interface IModalProps {
-  children: React.ReactNode
-
+  children: React.ReactNode;
 }
 
 const Modal = (({children} : IModalProps) => {
@@ -15,14 +14,14 @@ const Modal = (({children} : IModalProps) => {
   }); 
   
   return (
-    <div id="modal">
+    <div id="modal" className={'hide'}>
       <div className={styles.fade} onClick={closeModal}></div>
       <div className={styles.modal}>
         <div>
           <CloseIcon className={styles.close_icon} onClick={closeModal}/>
         </div>
         <h2>
-            Editar tarefa
+            Task Editor
         </h2>
         {children}
       </div>

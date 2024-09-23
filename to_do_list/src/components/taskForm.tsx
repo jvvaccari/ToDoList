@@ -1,4 +1,4 @@
-import React, {useState,ChangeEvent,FormEvent} from 'react';
+import React, {useState,ChangeEvent,FormEvent,useEffect} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import styles from './TaskForm.module.css';
@@ -10,23 +10,38 @@ interface ITaskProps{
     btnInput: string,
     taskList: ITask[],
     setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>
+    updateTask?: ITask | null;
+    handleUpdate?(id: number,title: string,difficulty: string): void;
 }
 
-const TaskForm = ({btnInput,taskList,setTaskList}: ITaskProps) => {
+const TaskForm = ({btnInput,taskList,setTaskList,updateTask,handleUpdate}: ITaskProps) => {
 
-    // const [id,setId] = useState<string>("");
+    const [id,setId] = useState<number>(0);
     const [title, setTitle] = useState<string>("");
     const [difficulty, setDifficulty] = useState<string>("");
 
+    useEffect(()=>{
+        if(updateTask){
+            setId(updateTask.id);
+            setTitle(updateTask.title);
+            setDifficulty(updateTask.difficulty);
+        }
+    },[updateTask]);
+
     const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const id = Math.floor(Math.random() * 1000);
-        const newTask:ITask = {id,title,difficulty};
+        if(updateTask){
+            handleUpdate!(id,title,difficulty);
+        }else{
+            const id = Math.floor(Math.random() * 1000);
 
-        setTaskList!([...taskList, newTask]);
+            const newTask:ITask = {id,title,difficulty};
 
-        setTitle("");
-        setDifficulty("");
+            setTaskList!([...taskList, newTask]);
+            
+            setTitle("");
+            setDifficulty("");
+        } 
     };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
