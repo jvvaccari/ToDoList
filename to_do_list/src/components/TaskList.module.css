@@ -1,0 +1,44 @@
+.cards_column{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    width: 320px;
+    padding: 24px 0;
+    text-align: left;
+    background-color: whitesmoke;
+    border-bottom: 2px solid grey;
+    box-shadow: 0 4px 8px rgba(207, 207, 207, 0.2);
+}
+
+.card h3 {
+    padding: 0.8em 0;
+    font-weight: 500;
+}
+
+.contentCard{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 1em;
+    margin-top: 0.5em;
+    gap: 10px;
+}
+
+.icons_column{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.icons_column div{
+    background-color:#313131;
+    padding: 5px;
+    margin-right: 1em;
+    margin-top: 0.5em;
+    cursor: pointer;
+}

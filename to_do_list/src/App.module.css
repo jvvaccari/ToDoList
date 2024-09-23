@@ -1,19 +1,24 @@
+body{
+    background-color: whitesmoke;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    text-align: center;
+}
+
 .main {
     display: flex;
     flex-direction: column;
+    height: 100vh;
     justify-content: center;
-    min-height: 79.7vh;
-    text-align: center;
     gap: 1em;
-    background-color: whitesmoke;
 }
 
 .main h2 {
     padding: 0.8em 0;
     font-weight: 600;
-}
-
-.main h3 {
-    padding: 0.8em 0;
-    font-weight: 500;
 }

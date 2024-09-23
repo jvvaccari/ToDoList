@@ -1,15 +1,15 @@
-import React, {useState,ChangeEvent,FormEvent,useEffect} from 'react';
+import React, {useState,ChangeEvent,FormEvent} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import styles from './InputContent.module.css';
+import styles from './TaskForm.module.css';
 
 // Interface
 import { ITask } from '../interfaces/ITask';
 
 interface ITaskProps{
-    btnInput: string;
-    taskList: ITask[];
-    setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
+    btnInput: string,
+    taskList: ITask[],
+    setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>
 }
 
 const TaskForm = ({btnInput,taskList,setTaskList}: ITaskProps) => {
@@ -27,8 +27,6 @@ const TaskForm = ({btnInput,taskList,setTaskList}: ITaskProps) => {
 
         setTitle("");
         setDifficulty("");
-
-        console.log(taskList);
     };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,8 +37,8 @@ const TaskForm = ({btnInput,taskList,setTaskList}: ITaskProps) => {
         }else if(name === "difficulty"){
             setDifficulty(value);
         }
-    }
-
+    };
+    
     return (
         <form onSubmit={addTaskHandler}>
             <div className={styles.input_content}>
@@ -66,7 +64,7 @@ const TaskForm = ({btnInput,taskList,setTaskList}: ITaskProps) => {
                     onChange={handleChange}
                     value= {difficulty}
                 />
-              
+            
                 <Button 
                     type="submit" 
                     value={btnInput} 
